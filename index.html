@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cream Shop — Barbershop, East LA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Oswald:wght@500;600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161210;
+    --cream:#f1e7d2;
+    --gold:#c9a13b;
+    --gold-dim:#8f7228;
+    --red:#7c1620;
+    --line:rgba(241,231,210,0.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+  }
+  .label{
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--gold);
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;}
+  a{color:inherit;}
+
+  /* pole */
+  .pole{
+    width:14px;height:44px;border-radius:7px;overflow:hidden;
+    background:repeating-linear-gradient(45deg,#c0392b 0 10px,#f1e7d2 10px 20px,#2d4373 20px 30px);
+    background-size:100% 200%;
+    animation:spin 1.4s linear infinite;
+    box-shadow:0 0 0 2px var(--gold-dim);
+    flex-shrink:0;
+  }
+  @keyframes spin{ from{background-position:0 0;} to{background-position:0 60px;} }
+  @media (prefers-reduced-motion: reduce){ .pole{animation:none;} }
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(22,18,16,0.92);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(6px);
+  }
+  header .brand{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-size:20px;}
+  header nav a{margin-left:28px;font-family:'Oswald',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:13px;text-decoration:none;color:var(--cream);opacity:0.85;}
+  header nav a:hover{color:var(--gold);opacity:1;}
+  header nav{display:none;}
+  @media(min-width:700px){ header nav{display:block;} }
+
+  /* hero */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(22,18,16,0.15) 0%,rgba(22,18,16,0.55) 60%,rgba(22,18,16,0.96) 100%), url('pappa-lino-storefront.png') center 25%/cover no-repeat;
+  }
+  .hero-inner{padding:0 6vw 64px;max-width:760px;}
+  .hero .label{margin-bottom:14px;display:block;}
+  .hero h1{font-size:clamp(40px,7vw,76px);line-height:1.02;color:var(--cream);}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p{margin-top:18px;font-size:18px;color:rgba(241,231,210,0.82);max-width:46ch;}
+  .cta-row{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;}
+  .btn{
+    font-family:'Oswald',sans-serif;letter-spacing:0.08em;text-transform:uppercase;font-size:14px;
+    padding:15px 30px;border-radius:2px;text-decoration:none;display:inline-block;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream);}
+
+  /* section shell */
+  section{padding:96px 6vw;border-bottom:1px solid var(--line);}
+  .eyebrow{margin-bottom:16px;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(28px,4vw,44px);}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;}
+  @media(min-width:860px){ .about{grid-template-columns:0.85fr 1.15fr;} }
+  .about img{width:100%;border-radius:4px;display:block;}
+  .about-copy p{color:rgba(241,231,210,0.82);margin-bottom:16px;max-width:52ch;}
+  .plaque{
+    margin-top:28px;border:1px solid var(--gold-dim);padding:20px 24px;display:inline-block;
+    font-family:'Oswald',sans-serif;letter-spacing:0.12em;text-transform:uppercase;font-size:13px;color:var(--gold);
+  }
+  .plaque div{margin:2px 0;}
+
+  /* services */
+  .services{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(min-width:640px){ .services{grid-template-columns:1fr 1fr;} }
+  .svc{background:var(--ink);padding:32px;}
+  .svc-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .svc-top h3{font-size:22px;}
+  .svc-top span{font-family:'Oswald',sans-serif;color:var(--gold);font-size:18px;}
+  .svc p{color:rgba(241,231,210,0.7);font-size:15px;}
+  .svc .time{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--gold-dim);text-transform:uppercase;margin-top:10px;display:block;}
+
+  /* gallery / cutting shot */
+  .gallery-wrap{max-width:900px;margin:0 auto;text-align:center;}
+  .gallery-wrap img{width:100%;border-radius:4px;}
+  .gallery-wrap p{margin-top:24px;color:rgba(241,231,210,0.7);font-size:15px;}
+
+  /* booking */
+  .booking{
+    background:linear-gradient(135deg,var(--red),#4a0e15);
+    text-align:center;
+  }
+  .booking h2{font-size:clamp(30px,5vw,48px);color:var(--cream);margin-bottom:16px;}
+  .booking p{color:rgba(241,231,210,0.85);max-width:50ch;margin:0 auto 32px;}
+  .booking .btn-primary{background:var(--cream);}
+
+  /* footer */
+  footer{padding:48px 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;}
+  footer .label{margin-bottom:6px;}
+  footer p{font-size:14px;color:rgba(241,231,210,0.7);}
+  footer .fbrand{display:flex;align-items:center;gap:12px;font-family:'Playfair Display',serif;font-size:18px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><div class="pole"></div>The Cream Shop</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#book">Book</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding:0;border-bottom:none;">
+  <div class="hero-inner">
+    <span class="label">Est. 2011 · East Cesar Chavez Ave, Los Angeles</span>
+    <h1>Good cuts.<br>Good convos.<br><em>Good people.</em></h1>
+    <p>A real neighborhood barbershop run by Pappa Lino — classic fades, straight-razor shaves, and honest conversation, since 2011.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://book.squareup.com/appointments/d43ec74c-f3f1-4728-b537-1df8fd5a99a0/location/1D6FB6JA223FP/services">Book an appointment</a>
+      <a class="btn btn-ghost" href="#services">See services</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <img src="pappa-lino-poster.png" alt="Illustrated portrait of Pappa Lino, the neighborhood barber">
+  <div class="about-copy">
+    <span class="label eyebrow">The Barber</span>
+    <h2>Pappa Lino</h2>
+    <p>Fourteen years in this chair, on this block. Pappa Lino learned the trade the old way — sharp lines, hot towels, and no rushing a good cut.</p>
+    <p>Every client leaves with more than a haircut: a shop that remembers your name, and a conversation worth coming back for.</p>
+    <div class="plaque">
+      <div>Good cuts</div>
+      <div>Good convos</div>
+      <div>Good people</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head">
+    <span class="label eyebrow">Services</span>
+    <h2>What we do in the chair</h2>
+  </div>
+  <div class="services">
+    <div class="svc">
+      <div class="svc-top"><h3>Men's Haircut</h3><span>$__</span></div>
+      <p>A classic or modern cut, tailored to you — consultation, wash, and finish included.</p>
+      <span class="time">__ min</span>
+    </div>
+    <div class="svc">
+      <div class="svc-top"><h3>Fade</h3><span>$__</span></div>
+      <p>Skin fade, taper, or blend — precision line-ups included.</p>
+      <span class="time">__ min</span>
+    </div>
+    <div class="svc">
+      <div class="svc-top"><h3>Beard Trim</h3><span>$__</span></div>
+      <p>Shape-up and detail work to keep your beard sharp between full grooms.</p>
+      <span class="time">__ min</span>
+    </div>
+    <div class="svc">
+      <div class="svc-top"><h3>Hot Towel Shave</h3><span>$__</span></div>
+      <p>A traditional straight-razor shave with hot towel prep — old-school relaxation.</p>
+      <span class="time">__ min</span>
+    </div>
+    <div class="svc">
+      <div class="svc-top"><h3>Kids' Haircut</h3><span>$__</span></div>
+      <p>Patient, welcoming service for younger clients, including kids with special needs.</p>
+      <span class="time">__ min</span>
+    </div>
+    <div class="svc">
+      <div class="svc-top"><h3>Mr. Cream Pomade</h3><span>$__</span></div>
+      <p>The Cream Shop's own water-soluble pomade — ask in-shop.</p>
+      <span class="time">Retail</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="gallery-wrap">
+    <img src="pappa-lino-cutting.png" alt="Pappa Lino cutting a client's hair inside The Cream Shop">
+    <p>Precision fades, done the old-school way — comb, clipper, and a steady hand.</p>
+  </div>
+</section>
+
+<section class="booking" id="book" style="border-bottom:none;">
+  <h2>Ready for a good cut?</h2>
+  <p>Book online in under a minute — pick your service, choose a time, and you're set.</p>
+  <a class="btn btn-primary" href="https://book.squareup.com/appointments/d43ec74c-f3f1-4728-b537-1df8fd5a99a0/location/1D6FB6JA223FP/services">Book an appointment</a>
+</section>
+
+<footer>
+  <div>
+    <div class="fbrand"><div class="pole"></div>The Cream Shop</div>
+    <p style="margin-top:8px;">2041 East Cesar Chavez Ave, Los Angeles, CA</p>
+    <p>(323) 685-5020</p>
+  </div>
+  <div>
+    <span class="label">Follow</span>
+    <p><a href="https://instagram.com/thecreamshopla">@thecreamshopla</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
