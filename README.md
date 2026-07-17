@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/pappa-lino-storefront.png" width="600" alt="Pappa Lino outside The Cream Shop">
+  <img src="pappa-lino-storefront.png" width="600" alt="Pappa Lino outside The Cream Shop">
 </p>
 
 <h1 align="center">The Cream Shop 💈</h1>
@@ -18,7 +18,7 @@
 The Cream Shop is a neighborhood barbershop on East Cesar Chavez Ave in Los Angeles, run by **Pappa Lino** — "The Neighborhood Barber." Since 2011, it's been a spot for classic cuts, straight-razor shaves, and real conversation.
 
 <p align="center">
-  <img src="./assets/pappa-lino-poster.png" width="480" alt="Pappa Lino illustrated poster">
+  <img src="pappa-lino-poster.png" width="480" alt="Pappa Lino illustrated poster">
 </p>
 
 **Address:** 2041 East Cesar Chavez Ave, Los Angeles, CA
@@ -39,7 +39,7 @@ The Cream Shop is a neighborhood barbershop on East Cesar Chavez Ave in Los Ange
 *(Fill in real prices/times before publishing.)*
 
 <p align="center">
-  <img src="./assets/pappa-lino-cutting.png" width="600" alt="Pappa Lino cutting a client's hair">
+  <img src="pappa-lino-cutting.png" width="600" alt="Pappa Lino cutting a client's hair">
 </p>
 
 ---
